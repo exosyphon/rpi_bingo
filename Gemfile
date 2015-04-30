@@ -18,11 +18,8 @@ group :development do
   gem 'tilt'
 end
 
+gem 'redis'
 gem 'jquery-rails'
-
-group :development do
-  gem 'sqlite3'
-end
 
 group :production do
   gem 'pg', '0.17.1'

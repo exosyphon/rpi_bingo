@@ -51,7 +51,7 @@ RpiBingo.Controller = (function () {
         this.bingo = __bind(this.bingo, this);
         this.bindEvents = __bind(this.bindEvents, this);
         this.messageQueue = [];
-        this.dispatcher = new WebSocketRails('rpibingo.herokuapp.com/websocket', useWebSockets);
+        this.dispatcher = new WebSocketRails(url, useWebSockets);
         this.dispatcher.on_open = this.createGuestUser;
         this.bindEvents();
     }
