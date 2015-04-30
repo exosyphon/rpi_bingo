@@ -11,6 +11,7 @@ group :assets do
   gem 'sass-rails',   '~> 4.0.0'
   gem "therubyracer"
   gem 'uglifier', '>= 1.0.3'
+  gem 'coffee-rails', '~> 4.0.0'
 end
 
 group :development do

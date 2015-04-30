@@ -41,6 +41,13 @@ GEM
     arel (4.0.0)
     atomic (1.1.13)
     builder (3.1.4)
+    coffee-rails (4.0.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0.beta, < 5.0)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.6.3)
     daemons (1.1.9)
     em-synchrony (1.0.3)
       eventmachine (>= 1.0.0.beta.1)
@@ -122,6 +129,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  coffee-rails (~> 4.0.0)
   jquery-rails
   rails (~> 4.0.0)
   sass-rails (~> 4.0.0)
