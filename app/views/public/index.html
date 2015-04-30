@@ -1,0 +1,39 @@
+<div class="form-inline component">
+    <fieldset>
+        <label style="font-weight: bold;">User Name: </label><input type="text" class="input-medium" id="user_name">
+        <br/>
+        <table>
+            <tr>
+                <td class="bingo_title"></td>
+                <td class="bingo_title">R</td>
+                <td class="bingo_title">P</td>
+                <td class="bingo_title">I</td>
+                <td class="bingo_title"></td>
+            </tr>
+            <tr>
+                <td class="bingo_title">B</td>
+                <td class="bingo_title">I</td>
+                <td class="bingo_title">N</td>
+                <td class="bingo_title">G</td>
+                <td class="bingo_title">O</td>
+            </tr>
+            <br/>
+            <tr>
+                <% @options.each_with_index do |option, index| %>
+                <% if index % 5 == 0 %>
+            </tr>
+            <tr>
+                <% end %>
+                <td>
+                    <button id="<%=index%>" class="bingo_button"><%= option %></button>
+                </td>
+                <%end %>
+            </tr>
+        </table>
+        <div class="component">
+            <button id="bingo" style="width: 100px; height:100px;">BINGO!</button>
+        </div>
+    </fieldset>
+</div>
+
+<div id="chat" class="component" data-uri="<%= request.host %>:<%= request.port %>/websocket"/>
