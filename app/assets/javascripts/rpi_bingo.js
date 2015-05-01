@@ -49,11 +49,39 @@ RpiBingo.Controller = (function () {
         this.sendMessage = __bind(this.sendMessage, this);
         this.newMessage = __bind(this.newMessage, this);
         this.bingo = __bind(this.bingo, this);
+        this.resetBoard = __bind(this.resetBoard, this);
         this.bindEvents = __bind(this.bindEvents, this);
         this.messageQueue = [];
         this.dispatcher = new WebSocketRails(url, useWebSockets);
         this.dispatcher.on_open = this.createGuestUser;
         this.bindEvents();
+    }
+
+    Controller.prototype.resetBoard = function() {
+        $('#0').css("background", "green");
+        $('#1').css("background", "green");
+        $('#2').css("background", "green");
+        $('#3').css("background", "green");
+        $('#4').css("background", "green");
+        $('#5').css("background", "green");
+        $('#6').css("background", "green");
+        $('#7').css("background", "green");
+        $('#8').css("background", "green");
+        $('#9').css("background", "green");
+        $('#10').css("background", "green");
+        $('#11').css("background", "green");
+        $('#13').css("background", "green");
+        $('#14').css("background", "green");
+        $('#15').css("background", "green");
+        $('#16').css("background", "green");
+        $('#17').css("background", "green");
+        $('#18').css("background", "green");
+        $('#19').css("background", "green");
+        $('#20').css("background", "green");
+        $('#21').css("background", "green");
+        $('#22').css("background", "green");
+        $('#23').css("background", "green");
+        $('#24').css("background", "green");
     }
 
     Controller.prototype.bindEvents = function () {
@@ -89,6 +117,7 @@ RpiBingo.Controller = (function () {
         $('#24').on('click', this.sendMessage);
 
         $('#bingo').on('click', this.bingo);
+        $('#reset_board').on('click', this.resetBoard);
     };
 
     Controller.prototype.newMessage = function (message) {
@@ -101,7 +130,8 @@ RpiBingo.Controller = (function () {
         this.dispatcher.trigger('new_message', {
             msg_body: 'has bingo`d!!!'
         });
-        location.reload();
+        alert(this.user.user_name + ' has bingo`d!!!');
+        this.resetBoard();
         return;
     };
 
@@ -130,10 +160,11 @@ RpiBingo.Controller = (function () {
         var messageTemplate;
         messageTemplate = this.template(message);
         $('#chat').append(messageTemplate);
-        messageTemplate.slideDown(140);
+        $('#chat').animate({ scrollTop: $('#chat').get(0).scrollHeight}, 2);
 
-        if (message.msg_body.indexOf('bingo') > 0) {
-            location.reload();
+        if (message.msg_body.indexOf('bingo') > 0 && message.user_name !== this.user.user_name) {
+            alert(message.user_name + ' ' + message.msg_body);
+            this.resetBoard();
             return;
         }
     };
